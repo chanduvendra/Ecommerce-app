@@ -1,0 +1,17 @@
+import mongoose from "mongoose";
+
+console.log(process.env.MONGO_URI);
+
+export const connectDB = async () => {
+    try {
+        const { connection } = await mongoose.connect(process.env.MONGO_URI, {
+            dbName: "Navya",
+        });
+        console.log(`Server connected to database ${connection.host}`);
+    } catch (error) {
+        console.log("Some Error Occurred", error);
+        process.exit(1);
+    }
+};
+
+export default connectDB;
